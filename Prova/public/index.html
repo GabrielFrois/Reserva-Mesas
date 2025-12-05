@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Reservas</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<div id="modalEdit" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalEditTitle">
+    <div class="modal-content">
+        <header class="modal-header">
+            <h3 id="modalEditTitle">Editar Reserva</h3>
+            <button id="modalClose" class="btn-muted" title="Fechar">✕</button>
+        </header>
+
+        <form id="formEditReserva" class="stack">
+            <input type="text" id="editNomeCliente" placeholder="Nome do cliente" required />
+            <input type="text" id="editContatoCliente" placeholder="Contato" required />
+            <select id="editMesaNumero" required></select>
+            <input type="number" id="editQuantidadePessoas" placeholder="Qtd pessoas" min="1" required />
+            <input type="datetime-local" id="editInicio" required />
+            <textarea id="editObservacoes" placeholder="Observações (opcional)"></textarea>
+
+            <div style="display:flex;gap:8px;margin-top:8px">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="button" id="modalCancel" class="btn-muted">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<body>
+
+    <header>
+        <h1>Sistema de Reservas</h1>
+
+        <nav>
+            <button onclick="mostrarPagina('dashboard')">Dashboard</button>
+            <button onclick="mostrarPagina('reservas')">Reservas</button>
+            <button onclick="mostrarPagina('mapa')">Mapa de Mesas</button>
+        </nav>
+    </header>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="pagina">
+        <h2>Dashboard</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Total de Mesas</h3>
+                <p id="totalMesas">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Reservas Hoje</h3>
+                <p id="reservasHoje">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Próxima Reserva</h3>
+                <p id="proximaReserva">---</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVAS -->
+    <section id="reservas" class="pagina hidden">
+        <h2>Reservas</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Contato</th>
+                    <th>Mesa</th>
+                    <th>Pessoas</th>
+                    <th>Início</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="listaReservas"></tbody>
+        </table>
+
+        <h3>Criar Reserva</h3>
+
+        <form id="formReserva">
+            <input type="text" id="nomeCliente" placeholder="Nome do cliente" required />
+            <input type="text" id="contatoCliente" placeholder="Contato" required />
+
+            <select id="mesaNumero" required></select>
+
+            <input type="number" id="quantidadePessoas" placeholder="Qtd pessoas" min="1" required />
+            <input type="datetime-local" id="inicio" required />
+
+            <button type="submit">Criar</button>
+        </form>
+    </section>
+
+    <!-- MAPA DE MESAS -->
+    <section id="mapa" class="pagina hidden">
+        <h2>Mapa de Mesas</h2>
+
+        <div id="gridMesas" class="grid-mesas"></div>
+
+        <div id="detalhesMesa" class="card hidden"></div>
+    </section>
+
+    <script src="script.js"></script>
+
+    <div id="modalEdit" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalEditTitle">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h3 id="modalEditTitle">Editar Reserva</h3>
+                <button id="modalClose" class="btn-muted" title="Fechar">✕</button>
+            </header>
+
+            <form id="formEditReserva" class="stack">
+                <input type="text" id="editNomeCliente" placeholder="Nome do cliente" required />
+                <input type="text" id="editContatoCliente" placeholder="Contato" required />
+                <select id="editMesaNumero" required></select>
+                <input type="number" id="editQuantidadePessoas" placeholder="Qtd pessoas" min="1" required />
+                <input type="datetime-local" id="editInicio" required />
+                <textarea id="editObservacoes" placeholder="Observações (opcional)"></textarea>
+
+                <div style="display:flex;gap:8px;margin-top:8px">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <button type="button" id="modalCancel" class="btn-muted">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
